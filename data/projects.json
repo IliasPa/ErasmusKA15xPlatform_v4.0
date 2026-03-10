@@ -1,0 +1,153 @@
+[
+  {
+    "id": "proj-001",
+    "title": "Youth Exchange in Lisbon: Green Coast Lab",
+    "ka_action": "KA152 – Youth Exchange",
+    "location_city": "Lisbon",
+    "destination_country": "Portugal",
+    "start_date": "2026-07-15",
+    "end_date": "2026-07-24",
+    "hosting_ngo": "Atlantic Youth Bridges",
+    "infopack_url": "https://example.org/infopacks/green-coast-lab.pdf",
+    "summary": "A 9-day youth exchange in Porto focused on climate action, eco-entrepreneurship, and local sustainability practices.",
+    "application_forms": {
+      "France": "https://example.org/forms/green-coast-lab/france",
+      "Germany": "https://example.org/forms/green-coast-lab/germany",
+      "Greece": "https://example.org/forms/green-coast-lab/greece",
+      "Italy": "https://example.org/forms/green-coast-lab/italy",
+      "Spain": "https://example.org/forms/green-coast-lab/spain"
+    }
+  },
+  {
+    "id": "proj-002",
+    "title": "Training Course in Spain: Digital Youth Work Studio",
+    "ka_action": "KA153 – Youth Workers Mobility",
+    "location_city": "Valencia",
+    "destination_country": "Spain",
+    "start_date": "2026-04-08",
+    "end_date": "2026-04-15",
+    "hosting_ngo": "Asociacion Faro Joven",
+    "infopack_url": "https://example.org/infopacks/digital-youth-work-studio.pdf",
+    "summary": "A training course for youth workers exploring digital facilitation, safe online participation, and hybrid learning design.",
+    "application_forms": {
+      "France": "https://example.org/forms/digital-youth-work/france",
+      "Greece": "https://example.org/forms/digital-youth-work/greece",
+      "Poland": "https://example.org/forms/digital-youth-work/poland",
+      "Romania": "https://example.org/forms/digital-youth-work/romania",
+      "Turkey": "https://example.org/forms/digital-youth-work/turkey"
+    }
+  },
+  {
+    "id": "proj-003",
+    "title": "Youth Exchange in Italy: Social Inclusion Makers",
+    "ka_action": "KA152 – Youth Exchange",
+    "location_city": "Bologna",
+    "destination_country": "Italy",
+    "start_date": "2026-09-03",
+    "end_date": "2026-09-12",
+    "hosting_ngo": "Cooperativa Nuova Rotta",
+    "infopack_url": "https://example.org/infopacks/social-inclusion-makers.pdf",
+    "summary": "Participants collaborate on peer-led activities about inclusion, anti-discrimination, and community storytelling in Bologna.",
+    "application_forms": {
+      "Germany": "https://example.org/forms/social-inclusion-makers/germany",
+      "Greece": "https://example.org/forms/social-inclusion-makers/greece",
+      "Italy": "https://example.org/forms/social-inclusion-makers/italy",
+      "Portugal": "https://example.org/forms/social-inclusion-makers/portugal",
+      "Spain": "https://example.org/forms/social-inclusion-makers/spain"
+    }
+  },
+  {
+    "id": "proj-004",
+    "title": "Training Course in France: Mental Health First",
+    "ka_action": "KA153 – Youth Workers Mobility",
+    "location_city": "Lyon",
+    "destination_country": "France",
+    "start_date": "2026-11-06",
+    "end_date": "2026-11-12",
+    "hosting_ngo": "Maison des Jeunes Europe",
+    "infopack_url": "https://example.org/infopacks/mental-health-first.pdf",
+    "summary": "A training course in Lyon on emotional resilience, safeguarding, and practical wellbeing tools for youth work teams.",
+    "application_forms": {
+      "France": "https://example.org/forms/mental-health-first/france",
+      "Greece": "https://example.org/forms/mental-health-first/greece",
+      "Romania": "https://example.org/forms/mental-health-first/romania",
+      "Spain": "https://example.org/forms/mental-health-first/spain",
+      "Turkey": "https://example.org/forms/mental-health-first/turkey"
+    }
+  },
+  {
+    "id": "proj-005",
+    "title": "Youth Exchange in Germany: Civic Media Bootcamp",
+    "ka_action": "KA151 – Youth Exchange",
+    "location_city": "Berlin",
+    "destination_country": "Germany",
+    "start_date": "2026-05-18",
+    "end_date": "2026-05-26",
+    "hosting_ngo": "Junge Stimmen Netzwerk",
+    "infopack_url": "https://example.org/infopacks/civic-media-bootcamp.pdf",
+    "summary": "Young participants explore media literacy, fact-checking, and youth participation through collaborative workshops in Berlin.",
+    "application_forms": {
+      "Germany": "https://example.org/forms/civic-media-bootcamp/germany",
+      "Italy": "https://example.org/forms/civic-media-bootcamp/italy",
+      "Poland": "https://example.org/forms/civic-media-bootcamp/poland",
+      "Portugal": "https://example.org/forms/civic-media-bootcamp/portugal"
+    }
+  },
+  {
+    "id": "proj-006",
+    "title": "Youth Exchange in Greece: Blue Economy Stories",
+    "ka_action": "KA152 – Youth Exchange",
+    "location_city": "Heraklion",
+    "destination_country": "Greece",
+    "start_date": "2026-08-21",
+    "end_date": "2026-08-30",
+    "hosting_ngo": "Aegean Youth Waves",
+    "infopack_url": "https://example.org/infopacks/blue-economy-stories.pdf",
+    "summary": "An island-based exchange focused on coastal communities, social innovation, and sustainable tourism.",
+    "application_forms": {
+      "Cyprus": "https://example.org/forms/blue-economy-stories/cyprus",
+      "Greece": "https://example.org/forms/blue-economy-stories/greece",
+      "Italy": "https://example.org/forms/blue-economy-stories/italy",
+      "Romania": "https://example.org/forms/blue-economy-stories/romania",
+      "Turkey": "https://example.org/forms/blue-economy-stories/turkey"
+    }
+  },
+  {
+    "id": "proj-007",
+    "title": "Training Course in Poland: Rural Youth Leadership Lab",
+    "ka_action": "KA153 – Youth Workers Mobility",
+    "location_city": "Krakow",
+    "destination_country": "Poland",
+    "start_date": "2027-01-11",
+    "end_date": "2027-01-17",
+    "hosting_ngo": "Fundacja Most Pokolen",
+    "infopack_url": "https://example.org/infopacks/rural-youth-leadership-lab.pdf",
+    "summary": "A practical training course for NGO staff working with rural youth participation, local partnerships, and leadership development.",
+    "application_forms": {
+      "France": "https://example.org/forms/rural-youth-leadership/france",
+      "Germany": "https://example.org/forms/rural-youth-leadership/germany",
+      "Poland": "https://example.org/forms/rural-youth-leadership/poland",
+      "Romania": "https://example.org/forms/rural-youth-leadership/romania",
+      "Spain": "https://example.org/forms/rural-youth-leadership/spain"
+    }
+  },
+  {
+    "id": "proj-008",
+    "title": "Youth Exchange in Romania: Inclusion Through Arts",
+    "ka_action": "KA152 – Youth Exchange",
+    "location_city": "Cluj-Napoca",
+    "destination_country": "Romania",
+    "start_date": "2027-03-05",
+    "end_date": "2027-03-13",
+    "hosting_ngo": "Creative Paths Association",
+    "infopack_url": "https://example.org/infopacks/inclusion-through-arts.pdf",
+    "summary": "Young people use theatre, photography, and non-formal education methods to explore inclusion and active citizenship.",
+    "application_forms": {
+      "Greece": "https://example.org/forms/inclusion-through-arts/greece",
+      "Italy": "https://example.org/forms/inclusion-through-arts/italy",
+      "Poland": "https://example.org/forms/inclusion-through-arts/poland",
+      "Romania": "https://example.org/forms/inclusion-through-arts/romania",
+      "Spain": "https://example.org/forms/inclusion-through-arts/spain"
+    }
+  }
+]

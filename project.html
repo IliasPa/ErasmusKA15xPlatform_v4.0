@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Erasmus+ Youth Opportunities</title>
+  <meta name="description" content="View full Erasmus+ youth project details and open the correct application form.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="site-shell site-shell--detail">
+    <header class="subpage-header">
+      <div class="container subpage-header__inner">
+        <a class="brand brand--compact" href="index.html" aria-label="Back to project list">
+          <img class="brand__logo" src="assets/logo.png" alt="Platform logo">
+          <span class="brand__text">Erasmus+ Youth Opportunities</span>
+        </a>
+        <a class="button button--ghost" href="index.html">Back to catalog</a>
+      </div>
+    </header>
+
+    <main class="container page-content">
+      <div class="detail-layout" id="projectPage">
+        <section class="detail-card" id="projectDetails">
+          <div class="detail-card__content">
+            <p class="eyebrow" id="projectActionBadge"></p>
+            <h1 id="projectTitle"></h1>
+            <p class="detail-summary" id="projectSummary"></p>
+
+            <dl class="detail-meta">
+              <div>
+                <dt>KA Action</dt>
+                <dd id="projectKaAction"></dd>
+              </div>
+              <div>
+                <dt>Hosting NGO</dt>
+                <dd id="projectNgo"></dd>
+              </div>
+            </dl>
+
+            <div class="detail-highlights">
+              <p class="detail-highlight" id="projectLocationLine"></p>
+              <p class="detail-highlight" id="projectDatesLine"></p>
+            </div>
+          </div>
+
+          <aside class="detail-card__sidebar">
+            <div class="sidebar-block">
+              <h2>Application</h2>
+              <p>Select one of the accepted residence countries to open the correct application form for this project.</p>
+              <label class="field">
+                <span>My Country</span>
+                <select id="detailResidenceFilter">
+                  <option value="">Select your country</option>
+                </select>
+              </label>
+              <div class="detail-actions">
+                <a class="button button--secondary" id="projectInfopackButton" href="#" target="_blank" rel="noopener noreferrer">Open infopack</a>
+                <button class="button button--primary" id="projectApplyButton" type="button">Apply now</button>
+              </div>
+            </div>
+
+            <div class="sidebar-block">
+              <h2>Accepted residence countries</h2>
+              <ul class="country-list" id="acceptedCountriesList"></ul>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="country-dialog" id="countryDialog">
+    <form class="country-dialog__form" method="dialog">
+      <div>
+        <p class="country-dialog__eyebrow">Application form</p>
+        <h2>Select your country of residence</h2>
+        <p>We will open the correct application form for this project.</p>
+      </div>
+
+      <label class="field">
+        <span>My Country</span>
+        <select id="dialogCountrySelect">
+          <option value="">Select your country</option>
+        </select>
+      </label>
+
+      <div class="country-dialog__actions">
+        <button class="button button--ghost" type="button" id="dialogCancelButton">Cancel</button>
+        <button class="button button--primary" type="button" id="dialogConfirmButton">Open application form</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/filters.js"></script>
+  <script src="js/project.js"></script>
+</body>
+</html>

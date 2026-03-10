@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erasmus+ Youth Opportunities</title>
+  <meta name="description" content="Search Erasmus+ youth exchanges and training opportunities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="hero">
+      <div class="container hero__inner">
+            <a href="index.html" aria-label="Erasmus+ Youth Opportunities home">
+                <div class="hero__content">
+                    <h1>Erasmus+ Youth Opportunities</h1>
+                    <p class="hero__subtitle">KA15x Project Finder</p>
+                </div>
+            </a>
+      </div>
+    </header>
+
+    <main class="container page-content">
+      <section class="filters-panel" aria-label="Search and filters">
+        <div class="filters-panel__header">
+          <div>
+            <h2>Search and filters</h2>
+            <p>Find open youth exchanges and mobility projects by month, type, destination, and eligibility country.</p>
+          </div>
+        </div>
+
+        <div class="filters-grid">
+          <label class="field">
+            <span>Search projects</span>
+            <input id="searchInput" type="search" placeholder="Search by title, NGO, theme, or country">
+          </label>
+
+          <label class="field">
+            <span>Month</span>
+            <select id="monthFilter">
+              <option value="all">All</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Project Type</span>
+            <select id="projectTypeFilter">
+              <option value="all">All</option>
+              <option value="KA151 – Youth Exchange">KA151 – Youth Exchange</option>
+              <option value="KA152 – Youth Exchange">KA152 – Youth Exchange</option>
+              <option value="KA153 – Youth Workers Mobility">KA153 – Youth Workers Mobility</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Destination Country</span>
+            <select id="destinationFilter">
+              <option value="all">All</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>My Country</span>
+            <select id="residenceFilter">
+              <option value="">Select your country</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="results-section" aria-live="polite">
+        <div class="results-section__header">
+          <p class="results-count" id="resultsCount">Loading projects...</p>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <h2>No projects match your filters.</h2>
+          <p>Try a different month, project type, destination, or search term.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/filters.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
