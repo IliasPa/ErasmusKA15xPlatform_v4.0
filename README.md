@@ -9,6 +9,8 @@ This project is a pure static website for browsing Erasmus+ youth projects such 
 - Filters by month, project type, destination country, and residence-country eligibility
 - Opens the correct application form based on the visitor's country of residence
 - Shows a dedicated details page for each project
+- Includes a static-friendly NGO submission page with repeatable country/application form rows and client-side validation
+- Includes a lightweight static suggestions page for feedback, corrections, and missing project suggestions
 
 ## Project structure
 
@@ -16,12 +18,15 @@ This project is a pure static website for browsing Erasmus+ youth projects such 
 erasmus-projects-platform/
   index.html
   project.html
+  submit.html
+  suggest.html
   css/
     style.css
   js/
     app.js
     filters.js
     project.js
+    submit.js
   data/
     projects.json
   assets/
@@ -74,6 +79,31 @@ Make sure each project has:
 - A valid `infopack_url`
 - A complete `application_forms` object for supported countries
 
+## NGO submission form
+
+The site includes `submit.html`, a static-friendly submission form for NGOs.
+
+- The form is ready for Formspree-style integration
+- Configure your form service endpoint to send submissions to `prinem@gmail.com`
+- Replace the placeholder `action` URL in `submit.html` with your actual form service endpoint
+- Repeatable country/application-form rows are managed in `js/submit.js`
+- Client-side validation checks required fields, date order, and URL fields
+
+### File uploads
+
+File uploads cannot work with plain static HTML alone. They require a third-party form service that supports multipart form uploads.
+
+- If your form service supports uploads, keep the file input enabled and use `multipart/form-data`
+- If it does not, use the Infopack URL field instead
+
+## Suggestions form
+
+The site also includes `suggest.html`, a lightweight page for normal users to send platform feedback, corrections, missing project suggestions, or general comments.
+
+- It uses a simple static form structure with optional name and email fields
+- Replace the placeholder form `action` URL with your preferred form service endpoint
+- No backend is required
+
 ## Deployment on GitHub Pages
 
 If this folder is the root of your repository:
@@ -98,4 +128,5 @@ Some browsers apply extra security rules to local JSON files when using the `fil
 - Shared filtering, country, and data-loading helpers are in `js/filters.js`
 - Homepage behavior is in `js/app.js`
 - Single-project page behavior is in `js/project.js`
+- Submission form behavior is in `js/submit.js`
 - No build tools or package managers are required

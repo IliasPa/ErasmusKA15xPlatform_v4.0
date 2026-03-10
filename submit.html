@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit a Project | Erasmus+ Youth Opportunities</title>
+  <meta name="description" content="Submit an Erasmus+ project for review and manual publication.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="site-shell site-shell--detail">
+    <header class="subpage-header">
+      <div class="container subpage-header__inner">
+        <a class="button button--ghost" href="index.html">Back to catalog</a>
+      </div>
+    </header>
+
+    <main class="container page-content">
+      <section class="submit-intro">
+        <h1>Submit your Erasmus+ project for review.</h1>
+      </section>
+
+      <!-- Replace this action URL with your Formspree or other form service endpoint -->
+      <form class="submission-form" id="projectSubmissionForm" action="https://formspree.io/f/xdaweeyk" method="post" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="_subject" value="New Erasmus+ project submission">
+
+        <section class="form-section">
+          <div class="form-section__header">
+            <h2>Project Information</h2>
+          </div>
+          <div class="form-grid">
+            <label class="field field--stacked">
+              <span>Project title</span>
+              <input id="submissionProjectTitle" name="project_title" type="text" required>
+            </label>
+
+            <label class="field field--stacked">
+              <span>Project type</span>
+              <select id="submissionProjectType" name="project_type" required>
+                <option value="">Select project type</option>
+                <option value="KA151 – Youth Exchange">KA151 – Youth Exchange</option>
+                <option value="KA152 – Youth Exchange">KA152 – Youth Exchange</option>
+                <option value="KA153 – Youth Workers Mobility">KA153 – Youth Workers Mobility</option>
+              </select>
+            </label>
+
+            <label class="field field--stacked">
+              <span>Hosting NGO</span>
+              <input id="submissionHostingNgo" name="hosting_ngo" type="text" required>
+            </label>
+
+            <label class="field field--stacked field--full">
+              <span>Summary / description</span>
+              <textarea id="submissionSummary" name="summary" rows="5"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="form-section__header">
+            <h2>Dates and Location</h2>
+          </div>
+          <div class="form-grid">
+            <label class="field field--stacked">
+              <span>Location city</span>
+              <input id="submissionLocationCity" name="location_city" type="text">
+            </label>
+
+            <label class="field field--stacked">
+              <span>Destination country</span>
+              <select id="submissionDestinationCountry" name="destination_country" required>
+                <option value="">Select destination country</option>
+              </select>
+            </label>
+
+            <label class="field field--stacked">
+              <span>Start date</span>
+              <input id="submissionStartDate" name="start_date" type="date" required>
+            </label>
+
+            <label class="field field--stacked">
+              <span>End date</span>
+              <input id="submissionEndDate" name="end_date" type="date" required>
+            </label>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="form-section__header">
+            <h2>Links and Files</h2>
+          </div>
+          <div class="form-grid">
+            <label class="field field--stacked">
+              <span>Infopack URL</span>
+              <input id="submissionInfopackUrl" name="infopack_url" type="url" placeholder="https://">
+            </label>
+
+            <label class="field field--stacked">
+              <span>Infopack upload</span>
+              <input id="submissionInfopackFile" name="infopack_file" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+              <small class="field-hint">File uploads require a third-party form service that supports multipart uploads. If your service does not support uploads, use the Infopack URL field instead.</small>
+            </label>
+
+            <label class="field field--stacked field--full">
+              <span>Website / source link (optional)</span>
+              <input id="submissionWebsiteLink" name="website_source_link" type="url" placeholder="https://">
+            </label>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <div class="form-section__header">
+            <h2>Application Forms</h2>
+            <p>Add one or more country-specific application form links.</p>
+          </div>
+
+          <div class="application-forms-note">
+            <label class="checkbox-field">
+              <input id="noApplicationForms" name="no_application_forms_yet" type="checkbox" value="yes">
+              <span>No country-specific application forms are available yet.</span>
+            </label>
+          </div>
+
+          <div class="application-forms" id="applicationFormsContainer"></div>
+
+          <button class="button button--secondary" id="addApplicationFormButton" type="button">Add country form link</button>
+        </section>
+
+        <section class="form-section">
+          <div class="form-section__header">
+            <h2>Contact Information</h2>
+          </div>
+          <div class="form-grid">
+            <label class="field field--stacked">
+              <span>NGO name</span>
+              <input id="submissionNgoName" name="submitter_ngo_name" type="text">
+            </label>
+
+            <label class="field field--stacked">
+              <span>Contact person</span>
+              <input id="submissionContactPerson" name="contact_person" type="text">
+            </label>
+
+            <label class="field field--stacked field--full">
+              <span>Contact email</span>
+              <input id="submissionContactEmail" name="contact_email" type="email" required>
+            </label>
+          </div>
+        </section>
+
+        <div class="form-status" id="formStatus" aria-live="polite"></div>
+
+        <div class="form-actions">
+          <button class="button button--primary" type="submit">Submit for review</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <template id="applicationFormRowTemplate">
+    <div class="application-form-row">
+      <label class="field field--stacked">
+        <span>Country of residence</span>
+        <select class="application-form-country" name="application_form_country[]">
+          <option value="">Select country</option>
+        </select>
+      </label>
+
+      <label class="field field--stacked">
+        <span>Application form URL</span>
+        <input class="application-form-url" name="application_form_url[]" type="url" placeholder="https://">
+      </label>
+
+      <button class="button button--ghost application-form-remove" type="button">Remove</button>
+    </div>
+  </template>
+
+  <script src="js/filters.js"></script>
+  <script src="js/submit.js"></script>
+  <script src="js/modal.js"></script>
+</body>
+</html>

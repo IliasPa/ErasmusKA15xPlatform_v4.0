@@ -1,12 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
   const platform = window.ErasmusFilters;
   const state = platform.createInitialState();
+  const filterBindings = [
+    {
+      control: "searchControl",
+      input: "searchInput",
+      clearButton: "clearSearchButton",
+      stateKey: "search",
+      defaultValue: ""
+    },
+    {
+      control: "projectTypeControl",
+      input: "projectTypeFilter",
+      clearButton: "clearProjectTypeButton",
+      stateKey: "projectType",
+      defaultValue: "all"
+    },
+    {
+      control: "monthControl",
+      input: "monthFilter",
+      clearButton: "clearMonthButton",
+      stateKey: "month",
+      defaultValue: "all"
+    },
+    {
+      control: "destinationControl",
+      input: "destinationFilter",
+      clearButton: "clearDestinationButton",
+      stateKey: "destination",
+      defaultValue: "all"
+    },
+    {
+      control: "residenceControl",
+      input: "residenceFilter",
+      clearButton: "clearResidenceButton",
+      stateKey: "residence",
+      defaultValue: ""
+    }
+  ];
   const elements = {
     searchInput: document.getElementById("searchInput"),
     monthFilter: document.getElementById("monthFilter"),
     projectTypeFilter: document.getElementById("projectTypeFilter"),
     destinationFilter: document.getElementById("destinationFilter"),
     residenceFilter: document.getElementById("residenceFilter"),
+    searchControl: document.getElementById("searchControl"),
+    monthControl: document.getElementById("monthControl"),
+    projectTypeControl: document.getElementById("projectTypeControl"),
+    destinationControl: document.getElementById("destinationControl"),
+    residenceControl: document.getElementById("residenceControl"),
+    clearSearchButton: document.getElementById("clearSearchButton"),
+    clearMonthButton: document.getElementById("clearMonthButton"),
+    clearProjectTypeButton: document.getElementById("clearProjectTypeButton"),
+    clearDestinationButton: document.getElementById("clearDestinationButton"),
+    clearResidenceButton: document.getElementById("clearResidenceButton"),
     projectsGrid: document.getElementById("projectsGrid"),
     resultsCount: document.getElementById("resultsCount"),
     emptyState: document.getElementById("emptyState")
@@ -38,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       upcomingMonths.map(function (monthOption) {
         return monthOption.label;
       }),
-      "All",
+      "Month",
       "all"
     );
     Array.from(elements.monthFilter.options).forEach(function (option, index) {
@@ -51,41 +98,60 @@ document.addEventListener("DOMContentLoaded", function () {
     platform.populateSelect(
       elements.destinationFilter,
       platform.getUniqueValues(projects, "destination_country"),
-      "All",
+      "Destination",
       "all"
     );
 
     elements.monthFilter.value = state.month;
     elements.projectTypeFilter.value = state.projectType;
     elements.destinationFilter.value = state.destination;
+    updateFilterControls();
   }
 
   function bindEvents() {
     elements.searchInput.addEventListener("input", function (event) {
       state.search = event.target.value.trim();
-      renderProjects();
+      refreshProjects();
     });
 
     elements.monthFilter.addEventListener("change", function (event) {
       state.month = event.target.value;
-      renderProjects();
+      refreshProjects();
     });
 
     elements.projectTypeFilter.addEventListener("change", function (event) {
       state.projectType = event.target.value;
-      renderProjects();
+      refreshProjects();
     });
 
     elements.destinationFilter.addEventListener("change", function (event) {
       state.destination = event.target.value;
-      renderProjects();
+      refreshProjects();
     });
 
     elements.residenceFilter.addEventListener("change", function (event) {
       state.residence = event.target.value;
       platform.saveResidenceCountry(state.residence);
-      renderProjects();
+      refreshProjects();
     });
+
+    filterBindings.forEach(function (binding) {
+      elements[binding.clearButton].addEventListener("click", function () {
+        state[binding.stateKey] = binding.defaultValue;
+        elements[binding.input].value = binding.defaultValue;
+
+        if (binding.stateKey === "residence") {
+          platform.saveResidenceCountry("");
+        }
+
+        refreshProjects();
+      });
+    });
+  }
+
+  function refreshProjects() {
+    renderProjects();
+    updateFilterControls();
   }
 
   function renderProjects() {
@@ -95,6 +161,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalProjects = filteredProjects.length;
     elements.resultsCount.textContent = totalProjects === 1 ? "1 project found" : totalProjects + " projects found";
     elements.emptyState.hidden = totalProjects !== 0;
+  }
+
+  function updateFilterControls() {
+    filterBindings.forEach(function (binding) {
+      toggleControl(
+        elements[binding.control],
+        elements[binding.clearButton],
+        state[binding.stateKey] !== binding.defaultValue
+      );
+    });
+  }
+
+  function toggleControl(controlElement, clearButton, isActive) {
+    controlElement.classList.toggle("is-active", isActive);
+    clearButton.hidden = !isActive;
   }
 
   function createProjectCard(project) {
