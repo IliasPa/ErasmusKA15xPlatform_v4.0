@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dateRange = platform.formatProjectDateRange(project.start_date, project.end_date);
 
     return [
-      '<a class="project-card" href="project.html?id=' + encodeURIComponent(project.id) + '" aria-label="View details for ' + escapeAttribute(project.title) + '">',
+      '<a class="project-card" href="project?id=' + encodeURIComponent(project.id) + '" aria-label="View details for ' + escapeAttribute(project.title) + '">',    
       '  <div class="project-card__meta">',
       '    <span class="pill">' + escapeHtml(project.ka_action) + '</span>',
       '    <span class="pill">' + escapeHtml(project.destination_country) + '</span>',
