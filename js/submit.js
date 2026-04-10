@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const rowTemplate = document.getElementById("applicationFormRowTemplate");
   const formStatus = document.getElementById("formStatus");
 
-  // Configuration - Update this URL after deploying to Vercel
-  const API_ENDPOINT = 'https://your-vercel-app.vercel.app/api/submit-project';
-
   initialize();
 
   function initialize() {
@@ -96,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
     clearStatus();
     clearCustomErrors();
 
@@ -108,87 +104,18 @@ document.addEventListener("DOMContentLoaded", function () {
     validateApplicationForms(validationErrors);
 
     if (!form.checkValidity() || validationErrors.length > 0) {
+      event.preventDefault();
       formStatus.textContent = validationErrors[0] || "Please review the highlighted fields before submitting.";
       formStatus.className = "form-status is-error";
       form.reportValidity();
       return;
     }
 
-    // Collect form data
-    const formData = new FormData(form);
-    const data = {
-      project_title: formData.get('project_title'),
-      project_type: formData.get('project_type'),
-      hosting_ngo: formData.get('hosting_ngo'),
-      summary: formData.get('summary'),
-      location_city: formData.get('location_city'),
-      destination_country: formData.get('destination_country'),
-      start_date: formData.get('start_date'),
-      end_date: formData.get('end_date'),
-      infopack_url: formData.get('infopack_url'),
-      submitter_ngo_name: formData.get('submitter_ngo_name'),
-      contact_person: formData.get('contact_person'),
-      contact_email: formData.get('contact_email'),
-      no_application_forms_yet: formData.get('no_application_forms_yet')
-    };
-
-    // Collect application forms
-    const applicationCountries = formData.getAll('application_form_country[]');
-    const applicationUrls = formData.getAll('application_form_url[]');
-
-    // Filter out empty entries
-    const validApplicationCountries = [];
-    const validApplicationUrls = [];
-
-    for (let i = 0; i < applicationCountries.length; i++) {
-      if (applicationCountries[i] && applicationUrls[i]) {
-        validApplicationCountries.push(applicationCountries[i]);
-        validApplicationUrls.push(applicationUrls[i]);
-      }
+    if (form.action.indexOf("your-form-id") !== -1) {
+      event.preventDefault();
+      formStatus.textContent = "Replace the placeholder form action URL with your Formspree or other form service endpoint before submitting. Configure it to send submissions to prinem@gmail.com.";
+      formStatus.className = "form-status is-error";
     }
-
-    data.application_form_country = validApplicationCountries;
-    data.application_form_url = validApplicationUrls;
-
-    // Disable submit button
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = 'Submitting...';
-    }
-
-    // Send to API
-    fetch(API_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-      if (result.success) {
-        form.reset();
-        // Reset application forms
-        applicationFormsContainer.innerHTML = '';
-        addApplicationFormRow();
-        syncApplicationFormsState();
-        showToast('success', 'Thank you! Your project has been submitted for review.');
-      } else {
-        showToast('error', result.error || 'Something went wrong. Please try again later.');
-      }
-    })
-    .catch(error => {
-      console.error('Submission error:', error);
-      showToast('error', 'Something went wrong. Please try again later.');
-    })
-    .finally(() => {
-      // Re-enable submit button
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Submit for review';
-      }
-    });
   }
 
   function validateDateRange() {
@@ -278,24 +205,5 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       return false;
     }
-  }
-
-  function showToast(type, message) {
-    const toast = document.getElementById("toast");
-    if (!toast) {
-      return;
-    }
-
-    toast.textContent = message;
-    toast.classList.remove("toast--success", "toast--error");
-    toast.classList.add("toast--feedback", type === "success" ? "toast--success" : "toast--error", "is-visible");
-
-    if (window.toastTimer) {
-      window.clearTimeout(window.toastTimer);
-    }
-
-    window.toastTimer = window.setTimeout(function () {
-      toast.classList.remove("is-visible", "toast--feedback", "toast--success", "toast--error");
-    }, 3000);
   }
 });

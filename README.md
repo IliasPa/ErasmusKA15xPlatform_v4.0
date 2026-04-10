@@ -2,12 +2,6 @@
 
 This project is a pure static website for browsing Erasmus+ youth projects such as youth exchanges and training courses. It reads all project data from a local JSON file and can be hosted on GitHub Pages without any backend, database, or build step.
 
-## Architecture
-
-- **Frontend**: Static HTML/CSS/JS hosted on GitHub Pages
-- **API**: Serverless function on Vercel for form submissions
-- **Storage**: Submitted projects saved as JSON files in GitHub repository
-
 ## What the project does
 
 - Displays Erasmus+ youth projects from `data/projects.json`
