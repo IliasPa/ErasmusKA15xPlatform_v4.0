@@ -1,9 +1,0 @@
-name = "form-to-github"
-main = "src/index.js"
-compatibility_date = "2024-01-01"
-
-[vars]
-GITHUB_OWNER = "IliasPa"
-GITHUB_REPO = "ErasmusKA15xPlatform_v4.0"
-GITHUB_FILE_PATH = "data/projects.json"
-GITHUB_BRANCH = "main"
