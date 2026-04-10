@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const rowTemplate = document.getElementById("applicationFormRowTemplate");
   const formStatus = document.getElementById("formStatus");
 
+  // Configuration - Update this URL after deploying to Vercel
+  const API_ENDPOINT = 'https://your-vercel-app.vercel.app/api/submit-project';
+
   initialize();
 
   function initialize() {
@@ -155,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Send to API
-    fetch('/api/submit-project', {
+    fetch(API_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
